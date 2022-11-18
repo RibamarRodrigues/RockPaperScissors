@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [My url Solution](https://your-solution-url.com)
-- Live Site URL: [Site url Solution](https://your-live-site-url.com)
+- Solution URL: [My url Solution](https://www.frontendmentor.io/solutions/rockpaperscissors-_QRvBaCAm6)
+- Live Site URL: [Site url Solution](https://ribamarrodrigues.github.io/RockPaperScissors/)
 
 
 ### Built with
