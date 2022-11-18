@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+body{
+    background: linear-gradient(to bottom, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Header and score */
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 40px 0;
+    padding: 20px;
+    border: 5px solid hsl(217, 16%, 45%);
+    border-radius: 10px;
+}
+
+header .score{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    color: hsl(229, 64%, 46%);
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+}
+
+header .score .points{
+    color: hsl(229, 25%, 31%);
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+
+/* Rules button and img */
+.rules-btn{
+    height: 40px;
+    width: 125px;
+    align-self: flex-end;
+    margin: 40px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid hsl(217, 16%, 45%);
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.rules-img{
+    position: absolute;
+    top: 200px;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    color: hsl(229, 25%, 31%);
+    padding: 10px 40px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    row-gap: 20px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: .3s;
+}
+
+.rules-img.show{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.rules-img > img:first-of-type{
+    cursor: pointer;
+    justify-self: end;
+}
+
+.rules-img > img:last-child{
+    grid-column: 1/3;
+}
+
+.overlay.show{
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+}
+
+/* Escolher */
+.choises{
+    background-image: url(images/bg-triangle.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    max-width: 550px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.choises > button{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 20px solid transparent;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.choises > button:hover{
+    transform: translate(-15px, -15px);
+}
+
+.choises > button > img, .jokenpo > button > img{
+    width: 75px;
+}
+
+.choises .rock{
+    justify-self: left;
+    border: 20px solid hsl(349, 70%, 56%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(349, 71%, 52%);
+}
+
+.choises .paper{
+    justify-self: right;
+    border: 20px solid hsl(230, 89%, 65%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(230, 89%, 62%);
+}
+
+.choises .scissors{
+    grid-column: 1/3;
+    justify-self: center;
+    align-self: end;
+    border: 20px solid hsl(40, 84%, 53%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(39, 89%, 49%);
+}
+
+
+/* Jokenpo jogo/Styles gerais */
+.jokenpo{
+    height: 400px;
+    max-width: 600px;
+    width: 100%;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.jokenpo .rock{
+    border: 20px solid hsl(349, 70%, 56%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(349, 71%, 52%);
+}
+
+.jokenpo .paper{
+    border: 20px solid hsl(230, 89%, 65%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(230, 89%, 62%);
+}
+
+.jokenpo .scissors{
+    border: 20px solid hsl(40, 84%, 53%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(39, 89%, 49%);
+}
+
+/* Jokenpo Animação de ganhar */
+.jokenpo .rock.win{
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 
+    0px 6px hsl(349, 71%, 52%),
+    0px 0px 0px 50px rgba(255, 255, 255, 0.3),
+    0px 0px 0px 100px rgba(255, 255, 255, 0.2),
+    0px 0px 0px 150px rgba(255, 255, 255, 0.1);
+}
+
+.jokenpo .paper.win{
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 
+    0px 6px hsl(230, 89%, 62%),
+    0px 0px 0px 50px rgba(255, 255, 255, 0.3),
+    0px 0px 0px 100px rgba(255, 255, 255, 0.2),
+    0px 0px 0px 150px rgba(255, 255, 255, 0.1);;
+}
+
+.jokenpo .scissors.win{
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 
+    0px 6px hsl(39, 89%, 49%),
+    0px 0px 0px 50px rgba(255, 255, 255, 0.3),
+    0px 0px 0px 100px rgba(255, 255, 255, 0.2),
+    0px 0px 0px 150px rgba(255, 255, 255, 0.1);
+}
+
+/* Button e h1 criada no js */
+.jokenpo > button{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.jokenpo > button:nth-child(2){
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.jokenpo > h1:nth-child(2){
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+/* Div criada no js para win/lose e play again */
+.jokenpo > div{
+    grid-column: 2;
+    grid-row: 1/3;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.jokenpo > div.show{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.jokenpo > div .play-again{
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    letter-spacing: 5px;
+    font-weight: 700;
+    color: hsl(230, 89%, 65%);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.jokenpo > div .play-again:hover{
+    color: hsl(349, 70%, 56%);
+}
+
+
+/* Animation in jokenpo div */
+.rock.click, .paper.click, .scissors.click{
+    animation: anime .5s linear;
+}
+
+@keyframes anime{
+    0%{
+        transform: translateY(-50px);
+    }
+}
+
+/* Animation reset in choise div */
+.rock#reset{
+    animation: reset-rock .5s linear;
+}
+
+.paper#reset{
+    animation: reset-paper .5s linear;
+}
+
+.scissors#reset{
+    animation: reset-scissors .5s linear;
+}
+
+@keyframes reset-rock{
+    0%{
+        transform: translateX(100px);
+    }
+}
+
+@keyframes reset-paper{
+    0%{
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes reset-scissors{
+    0%{
+        transform: translateY(-100px);
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    .choises > button, .jokenpo > button{
+        width: 150px;
+        height: 150px;
+        border: 10px;
+    }
+
+    .choises > button > img, .jokenpo > button > img{
+        width: 50px;
+    }
+
+    .jokenpo {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 1fr 1fr;
+    }
+
+    .jokenpo > div{
+        grid-column: 1/3;
+        grid-row: 3/4;
+        justify-self: center;
+    }
+
+    .rules-img{
+        top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
+        grid-template-columns: 1fr;
+        gap: 0;
+        justify-items: center;
+    }
+
+    .rules-img > img:first-of-type{
+        grid-row: 3;
+        justify-self: center;
+        width: 50px;
+    }
+
+
+    .rules-img > img:last-child {
+        max-width: 400px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    .choises {
+        height: 350px;
+    }
+    header > img{
+        width: 100px;
+    }
+}
