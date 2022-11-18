@@ -49,5 +49,5 @@ Users should be able to:
 
 ## Author
 
-- Website - [ribamar](https://github.com/RibamarRodrigues)
+- Website - [RibamarRodrigues](https://github.com/RibamarRodrigues)
 - Frontend Mentor - [@RibamarRodrigues](https://www.frontendmentor.io/profile/RibamarRodrigues)
