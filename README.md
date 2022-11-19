@@ -27,7 +27,7 @@ Users should be able to:
 ### Screenshot
 
 ![Desktop Screenshot](images/Desktop.png)
-![Mobile Screenshot](./screenshot.jpg)
+![Mobile Screenshot](images/mobile.jpg)
 
 
 ### Links
