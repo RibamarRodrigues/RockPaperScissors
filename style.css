@@ -114,7 +114,8 @@ header .score .points{
     height: 100%;
 }
 
-/* Escolher */
+
+/* Choises and Jokenpo styles/Button and hover */
 .choises{
     background-image: url(images/bg-triangle.svg);
     background-repeat: no-repeat;
@@ -126,7 +127,7 @@ header .score .points{
     grid-template-columns: 1fr 1fr;
 }
 
-.choises > button{
+.choises > button, .jokenpo > button{
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -139,32 +140,51 @@ header .score .points{
     transform: translate(-15px, -15px);
 }
 
-.choises > button > img, .jokenpo > button > img{
-    width: 75px;
-}
-
-.choises .rock{
-    justify-self: left;
+/* Styles Gerais */
+.choises .rock, .jokenpo .rock{
     border: 20px solid hsl(349, 70%, 56%);
     box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(349, 71%, 52%);
+    background-image: url(images/icon-rock.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75px;
+}
+
+.choises .paper, .jokenpo .paper{
+    border: 20px solid hsl(230, 89%, 65%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(230, 89%, 62%);
+    background-image: url(images/icon-paper.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75px;
+}
+
+.choises .scissors, .jokenpo .scissors{
+    border: 20px solid hsl(40, 84%, 53%);
+    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(39, 89%, 49%);
+    background-image: url(images/icon-scissors.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75px;
+}
+
+/* Styles especificos */
+.choises .rock{
+    justify-self: left;
 }
 
 .choises .paper{
     justify-self: right;
-    border: 20px solid hsl(230, 89%, 65%);
-    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(230, 89%, 62%);
 }
 
 .choises .scissors{
     grid-column: 1/3;
     justify-self: center;
     align-self: end;
-    border: 20px solid hsl(40, 84%, 53%);
-    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(39, 89%, 49%);
 }
 
 
-/* Jokenpo jogo/Styles gerais */
+/* Jokenpo jogo/Efeito shadow de gahhar */
 .jokenpo{
     height: 400px;
     max-width: 600px;
@@ -177,22 +197,6 @@ header .score .points{
     text-align: center;
 }
 
-.jokenpo .rock{
-    border: 20px solid hsl(349, 70%, 56%);
-    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(349, 71%, 52%);
-}
-
-.jokenpo .paper{
-    border: 20px solid hsl(230, 89%, 65%);
-    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(230, 89%, 62%);
-}
-
-.jokenpo .scissors{
-    border: 20px solid hsl(40, 84%, 53%);
-    box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 0px 6px hsl(39, 89%, 49%);
-}
-
-/* Jokenpo Animação de ganhar */
 .jokenpo .rock.win{
     box-shadow: inset 0px 6px rgb(0 0 0 / 50%), 
     0px 6px hsl(349, 71%, 52%),
@@ -217,15 +221,7 @@ header .score .points{
     0px 0px 0px 150px rgba(255, 255, 255, 0.1);
 }
 
-/* Button e h1 criada no js */
-.jokenpo > button{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: .3s;
-}
-
+/* Position de Button e h1 criada no js */
 .jokenpo > button:nth-child(2){
     grid-column: 1;
     grid-row: 2;
@@ -268,9 +264,8 @@ header .score .points{
     color: hsl(349, 70%, 56%);
 }
 
-
-/* Animation in jokenpo div */
-.rock.click, .paper.click, .scissors.click{
+/* Animation in jokenpo button */
+.jokenpo > button.click{
     animation: anime .5s linear;
 }
 
@@ -320,8 +315,9 @@ header .score .points{
         border: 10px;
     }
 
-    .choises > button > img, .jokenpo > button > img{
-        width: 50px;
+    .choises .rock, .choises .paper, .choises .scissors,
+    .jokenpo .rock, .jokenpo .paper, .jokenpo .scissors{
+        background-size: 50px;
     }
 
     .jokenpo {
