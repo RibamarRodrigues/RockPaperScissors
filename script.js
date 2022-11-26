@@ -21,16 +21,13 @@ choiseBtn.forEach((choise) => {
 })
 
 
-const rps = ["rock", "paper", "scissors"]
-let player = ""
-let house = ""
+let score = localStorage.getItem('scorePoints') || 0
+scorePoints.innerText = localStorage.getItem('scorePoints') || 0
 
 function jokenpo(event) {
-    player = event.target.className
-    house = rps[Math.floor(Math.random()*3)]
-    if (event.target.localName == "img"){
-        player = event.path[1].className
-    }
+    const rps = ["rock", "paper", "scissors"]
+    let house = rps[Math.floor(Math.random()*3)]
+    let player = event.target.className
 
     choises.style.display = "none"
     jokenpoScreen.style.display = "grid"
@@ -40,9 +37,6 @@ function jokenpo(event) {
     playerPicked.innerText = "YOU PICKED"
     const playerBtn = document.createElement('button')
     playerBtn.className = `${player} click`
-    const playerImg = document.createElement("img")
-    playerImg.src = `images/icon-${player}.svg`
-    playerBtn.appendChild(playerImg)
     jokenpoScreen.appendChild(playerPicked)
     jokenpoScreen.appendChild(playerBtn)
 
@@ -51,9 +45,6 @@ function jokenpo(event) {
     housePicked.innerText = "THE HOUSE PICKED"
     const houseBtn = document.createElement('button')
     houseBtn.className = `${house} click`
-    const houseImg = document.createElement("img")
-    houseImg.src = `images/icon-${house}.svg`
-    houseBtn.appendChild(houseImg)
     jokenpoScreen.appendChild(housePicked)
     jokenpoScreen.appendChild(houseBtn)
 
@@ -65,7 +56,6 @@ function jokenpo(event) {
     })
 }
 
-let score = 0
 const combinations = {
     rock: {
         win: "scissors",
@@ -92,8 +82,7 @@ function endGame(player, house, playerBtn, houseBtn){
     const playAgain = document.createElement('button')
     playAgain.innerText = "Play Again"
     playAgain.className = "play-again"
-    playAgain.addEventListener("click", reset)
-        
+    playAgain.addEventListener("click", reset)    
 
     if(combinations[player].win == house) {
         text.innerText = "YOU WIN"
@@ -115,11 +104,12 @@ function endGame(player, house, playerBtn, houseBtn){
         text.innerText = "DRAW"
     }
 
-    if (score < 0) {score = 0}
+    if (score < 0) score = 0
 
     divEnd.appendChild(text)
     divEnd.appendChild(playAgain)
     jokenpoScreen.appendChild(divEnd)
+    localStorage.setItem('scorePoints', score)
 
     setTimeout(()=>{
         divEnd.classList.add("show")
